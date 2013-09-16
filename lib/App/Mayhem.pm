@@ -102,7 +102,8 @@ sub BUILD {
     } # if ( defined $opts{help} )
     # set up the logger; we need this done so other methods/modules can have a
     # logger to log against
-    my $logger_conf = qq(log4perl.rootLogger = INFO, Screen\n);
+    #my $logger_conf = qq(log4perl.rootLogger = INFO, Screen\n);
+    my $logger_conf = qq(log4perl.rootLogger = DEBUG, Screen\n);
     if ( defined $opts{colorize} && $opts{colorize} == 1 ) {
         $logger_conf .= qq(log4perl.appender.Screen = )
             . qq(Log::Log4perl::Appender::ScreenColoredLevels\n);
@@ -132,9 +133,9 @@ sub BUILD {
     } else {
         $log->level($WARN);
     }
-    if ( defined $opts{debug} ) {
+    #if ( defined $opts{debug} ) {
         $log->level($DEBUG);
-    } # if ( defined $opts{DEBUG} )
+    #} # if ( defined $opts{DEBUG} )
 
     if ( $opts{generate} or $opts{short} ) {
         # load all of the sub-modules, then call $self->get_documentation
