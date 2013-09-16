@@ -227,9 +227,9 @@ sub run {
     my $gui_thread = threads->create(
         sub {
             $log->debug(LOGNAME . q(: Launching UI Manager;));
-            require App::Mayhem::UIManager;
-            import App::Mayhem::UIManager;
-            App::Mayhem::UIManager->new(layout => $layout);
+            require App::Mayhem::View;
+            import App::Mayhem::View;
+            App::Mayhem::View->new(layout => $layout);
         } # sub
     ); # my $gui_thread = threads->create
     $gui_thread->detach();
