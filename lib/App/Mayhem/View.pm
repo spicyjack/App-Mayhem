@@ -98,7 +98,7 @@ sub run {
     my $splash = App::Mayhem::View::SplashScreen->new();
     $log->debug(LOGNAME . q(: Launching main menu;));
     my $mainmenu = App::Mayhem::View::MainMenu->new(
-        layout=> $opts{compact}
+        layout => $self->layout
     );
 
     # set up the socket connection to the server so commands can be sent
@@ -122,6 +122,21 @@ sub run {
         } # if ( $msg_status > 0 )
     } # while ( defined $worksock )
 } # run
+
+=head1 OBJECT ATTRIBUTES
+
+=head2 layout
+
+String representing whic layout will be used for displaying user interfaces;
+one of C<compact> or C<larger>.
+
+=cut
+
+has q(layout) => (
+    is      => q(rw),
+    isa     => q(Str),
+    default => q(compact),
+);
 
 =head1 AUTHOR
 
